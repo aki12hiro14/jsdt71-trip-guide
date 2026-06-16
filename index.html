@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第71回日本透析医学会総会・出張のしおり</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap');
+
+  :root{
+    --ink:#0d2438;        /* 夜の港の紺 */
+    --ink-2:#16344e;
+    --paper:#f4efe4;      /* 生成りの紙 */
+    --paper-2:#ece5d4;
+    --gold:#b08949;       /* 真鍮の金 */
+    --gold-l:#cfa765;
+    --sea:#2f6f86;        /* 港の青緑 */
+    --line:rgba(176,137,73,.35);
+    --shadow:rgba(13,36,56,.12);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  body{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    background:var(--ink);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.8;
+  }
+
+  .book{
+    max-width:880px;
+    margin:0 auto;
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(176,137,73,.05), transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(47,111,134,.05), transparent 45%);
+  }
+
+  /* ===== 表紙 ===== */
+  .cover{
+    position:relative;
+    background:
+      linear-gradient(165deg, var(--ink) 0%, var(--ink-2) 55%, #0a1c2b 100%);
+    color:var(--paper);
+    padding:56px 48px 64px;
+    overflow:hidden;
+  }
+  .cover::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(244,239,228,.04) 0 1px, transparent 1px 64px);
+    opacity:.6;
+  }
+  /* 港の波紋ライン */
+  .cover .wave{
+    position:absolute;
+    right:-60px;bottom:-40px;
+    width:340px;height:340px;
+    border:1px solid rgba(207,167,101,.25);
+    border-radius:50%;
+  }
+  .cover .wave::after,
+  .cover .wave::before{
+    content:"";position:absolute;border-radius:50%;
+    border:1px solid rgba(207,167,101,.18);
+  }
+  .cover .wave::before{inset:34px}
+  .cover .wave::after{inset:74px;border-color:rgba(47,111,134,.35)}
+
+  .eyebrow{
+    position:relative;z-index:2;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    letter-spacing:.18em;
+    font-size:18px;
+    color:var(--gold-l);
+    margin-bottom:22px;
+  }
+  .cover h1{
+    position:relative;z-index:2;
+    font-family:'Shippori Mincho',serif;
+    font-weight:800;
+    font-size:38px;
+    line-height:1.35;
+    letter-spacing:.02em;
+    margin-bottom:6px;
+  }
+  .cover h1 .em{color:var(--gold-l)}
+  .cover .sub{
+    position:relative;z-index:2;
+    font-family:'Shippori Mincho',serif;
+    font-size:17px;
+    letter-spacing:.3em;
+    color:rgba(244,239,228,.78);
+    margin-top:14px;
+  }
+  .cover .meta{
+    position:relative;z-index:2;
+    margin-top:38px;
+    display:flex;gap:28px;flex-wrap:wrap;
+    border-top:1px solid rgba(207,167,101,.3);
+    padding-top:22px;
+  }
+  .cover .meta div span{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-size:12px;letter-spacing:.2em;
+    color:var(--gold-l);
+    text-transform:uppercase;
+    margin-bottom:3px;
+  }
+  .cover .meta div strong{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;font-size:18px;
+    color:var(--paper);
+  }
+
+  /* ===== 日付の章扉 ===== */
+  .day-head{
+    display:flex;align-items:baseline;gap:18px;
+    padding:36px 48px 8px;
+    border-bottom:2px solid var(--gold);
+    margin:0 0 4px;
+  }
+  .day-head .num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:72px;font-weight:600;
+    color:var(--gold);
+    line-height:.8;
+  }
+  .day-head .dh-txt h2{
+    font-family:'Shippori Mincho',serif;
+    font-weight:700;font-size:23px;
+    color:var(--ink);
+  }
+  .day-head .dh-txt p{
+    font-size:13px;letter-spacing:.16em;
+    color:var(--sea);
+    font-weight:500;
+    margin-top:2px;
+  }
+
+  section.day{padding:0 48px 20px}
+
+  /* ===== タイムライン ===== */
+  .timeline{
+    position:relative;
+    margin:28px 0 8px;
+    padding-left:96px;
+  }
+  .timeline::before{
+    content:"";position:absolute;
+    left:78px;top:8px;bottom:8px;
+    width:1px;background:var(--line);
+  }
+  .stop{
+    position:relative;
+    margin-bottom:26px;
+  }
+  .stop .time{
+    position:absolute;
+    left:-96px;width:66px;text-align:right;
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;font-size:17px;
+    color:var(--sea);
+    padding-top:1px;
+  }
+  .stop .time small{
+    display:block;font-family:'Zen Kaku Gothic New';
+    font-size:10px;letter-spacing:.1em;color:rgba(13,36,56,.45)
+  }
+  .stop::before{
+    content:"";position:absolute;
+    left:-22px;top:7px;
+    width:9px;height:9px;border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--gold);
+  }
+  .stop.key::before{
+    background:var(--gold);
+    box-shadow:0 0 0 4px rgba(176,137,73,.18);
+  }
+  .stop h3{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;font-size:16px;
+    color:var(--ink);
+    margin-bottom:3px;
+  }
+  .stop p{font-size:13.5px;color:rgba(13,36,56,.78)}
+  .stop .route{
+    font-size:12.5px;color:var(--sea);
+    margin-top:3px;letter-spacing:.02em;
+  }
+  .stop .route::before{content:"→ ";color:var(--gold)}
+
+  /* ===== 発表カード（主役） ===== */
+  .talk{
+    background:linear-gradient(160deg,var(--ink) 0%,var(--ink-2) 100%);
+    color:var(--paper);
+    border-radius:3px;
+    padding:22px 24px;
+    margin:6px 0 8px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 8px 26px var(--shadow);
+  }
+  .talk::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+    background:linear-gradient(var(--gold-l),var(--gold));
+  }
+  .talk .tag{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;font-size:14px;letter-spacing:.12em;
+    color:var(--gold-l);
+    margin-bottom:6px;
+  }
+  .talk h3{
+    font-family:'Shippori Mincho',serif;
+    font-weight:700;font-size:22px;
+    margin-bottom:14px;color:var(--paper)
+  }
+  .talk .grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:10px 18px;
+    border-top:1px solid rgba(207,167,101,.25);
+    padding-top:14px;
+  }
+  .talk .grid div span{
+    display:block;font-size:10.5px;letter-spacing:.16em;
+    color:var(--gold-l);text-transform:uppercase;
+    font-family:'Cormorant Garamond',serif;margin-bottom:2px;
+  }
+  .talk .grid div strong{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;font-size:15px;color:var(--paper);
+  }
+  .talk .grid div.wide{grid-column:1/-1}
+
+  /* ===== メモ・注意 ===== */
+  .note{
+    display:flex;gap:12px;
+    background:var(--paper-2);
+    border-left:3px solid var(--sea);
+    padding:12px 16px;
+    margin:6px 0 4px 96px;
+    font-size:12.5px;
+    color:rgba(13,36,56,.82);
+    border-radius:2px;
+  }
+  .note .mk{
+    font-family:'Shippori Mincho',serif;
+    font-weight:700;color:var(--sea);
+    flex-shrink:0;
+  }
+
+  /* ===== 夜の理想プラン帯 ===== */
+  .evening{
+    margin:18px 48px 0;
+    background:linear-gradient(160deg,#13283c,#0a1c2b);
+    color:var(--paper);
+    padding:24px 28px;border-radius:4px;
+    box-shadow:0 8px 26px var(--shadow);
+  }
+  .evening h4{
+    font-family:'Shippori Mincho',serif;
+    font-size:16px;font-weight:600;
+    color:var(--gold-l);margin-bottom:14px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .evening h4::before{content:"";width:22px;height:1px;background:var(--gold)}
+  .evening .row{
+    display:flex;gap:16px;align-items:baseline;
+    padding:7px 0;
+    border-bottom:1px dotted rgba(207,167,101,.22);
+    font-size:13.5px;
+  }
+  .evening .row:last-child{border-bottom:none}
+  .evening .row .t{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;font-size:15px;color:var(--gold-l);
+    min-width:96px;
+  }
+
+  /* ===== フッター ===== */
+  .foot{
+    background:var(--ink);color:rgba(244,239,228,.6);
+    text-align:center;padding:24px;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;letter-spacing:.14em;font-size:13px;
+  }
+  .foot span{color:var(--gold-l)}
+
+  @media(max-width:600px){
+    .cover{padding:40px 24px 48px}
+    .cover h1{font-size:28px}
+    .day-head{padding:28px 22px 8px}
+    section.day{padding:0 22px 16px}
+    .timeline{padding-left:74px}
+    .timeline::before{left:58px}
+    .stop .time{left:-74px;width:50px;font-size:15px}
+    .stop::before{left:-19px}
+    .note{margin-left:74px}
+    .evening{margin:18px 22px 0}
+    .talk .grid{grid-template-columns:repeat(2,1fr)}
+  }
+
+  @media print{
+    body{background:#fff}
+    .talk,.evening{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .day-head{break-before:page}
+  }
+
+  /* ===== 持ち物チェックリスト ===== */
+  section.checklist{padding:0 48px 28px}
+  .cl-progress{
+    display:flex;align-items:center;gap:14px;
+    margin:24px 0 22px;
+  }
+  .cl-progress .bar{
+    flex:1;height:6px;border-radius:3px;
+    background:var(--paper-2);overflow:hidden;
+  }
+  .cl-progress .bar i{
+    display:block;height:100%;width:0;
+    background:linear-gradient(90deg,var(--gold-l),var(--gold));
+    transition:width .35s ease;
+  }
+  .cl-progress .count{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;font-size:17px;color:var(--sea);
+    min-width:54px;text-align:right;
+  }
+  .cl-group{margin-bottom:22px}
+  .cl-group > h4{
+    font-family:'Shippori Mincho',serif;
+    font-weight:700;font-size:14px;
+    color:var(--gold);letter-spacing:.06em;
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:10px;
+  }
+  .cl-group > h4::after{content:"";flex:1;height:1px;background:var(--line)}
+  .cl-item{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:11px 14px;margin-bottom:6px;
+    background:var(--paper-2);
+    border-radius:3px;cursor:pointer;
+    user-select:none;
+    transition:background .15s,opacity .2s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .cl-item:hover{background:#e6dcc6}
+  .cl-box{
+    flex-shrink:0;width:20px;height:20px;margin-top:1px;
+    border:2px solid var(--gold);border-radius:4px;
+    position:relative;background:transparent;
+    transition:background .15s,border-color .15s;
+  }
+  .cl-box::after{
+    content:"";position:absolute;
+    left:5px;top:1px;width:5px;height:10px;
+    border:solid var(--paper);border-width:0 2px 2px 0;
+    transform:rotate(45deg) scale(0);
+    transition:transform .15s;
+  }
+  .cl-item .lbl{font-size:14px;color:var(--ink);line-height:1.5}
+  .cl-item .lbl small{display:block;font-size:11.5px;color:var(--sea);margin-top:1px}
+  .cl-item.checked .cl-box{background:var(--gold);border-color:var(--gold)}
+  .cl-item.checked .cl-box::after{transform:rotate(45deg) scale(1)}
+  .cl-item.checked .lbl{opacity:.5;text-decoration:line-through;text-decoration-color:var(--gold)}
+  .cl-item.key{border-left:3px solid var(--sea)}
+  .cl-reset{
+    margin-top:8px;
+    background:none;border:1px solid var(--line);
+    color:var(--sea);font-family:'Zen Kaku Gothic New';
+    font-size:12.5px;padding:8px 16px;border-radius:4px;
+    cursor:pointer;transition:background .15s;
+  }
+  .cl-reset:hover{background:var(--paper-2)}
+
+  /* ===== 時刻表ボタン ===== */
+  .tt-btn{
+    display:inline-flex;align-items:center;gap:5px;
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:11.5px;font-weight:500;
+    color:var(--ink);background:var(--gold-l);
+    padding:6px 13px;border-radius:5px;
+    text-decoration:none;margin-top:7px;
+    transition:background .15s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .tt-btn:hover{background:var(--gold)}
+  @media(max-width:600px){
+    section.checklist{padding:0 22px 24px}
+  }
+</style>
+</head>
+<body>
+<div class="book">
+
+  <!-- 表紙 -->
+  <header class="cover">
+    <div class="wave"></div>
+    <div class="eyebrow">Itinerary &mdash; Kobe &amp; Osaka</div>
+    <h1>第71回<br>日本透析医学会総会<br><span class="em">出張のしおり</span></h1>
+    <div class="sub">神 戸 ・ 大 阪</div>
+    <div class="meta">
+      <div><span>Date</span><strong>2026.6.20 — 6.21</strong></div>
+      <div><span>Route</span><strong>長崎 ⇄ 神戸</strong></div>
+      <div><span>Flight</span><strong>往復 スカイマーク</strong></div>
+      <div><span>Talks</span><strong>塚原さん／藤田さん</strong></div>
+    </div>
+  </header>
+
+  <!-- DAY 1 -->
+  <div class="day-head">
+    <div class="num">1</div>
+    <div class="dh-txt">
+      <h2>6月20日（土）</h2>
+      <p>長崎 → 神戸 → 梅田</p>
+    </div>
+  </div>
+  <section class="day">
+
+    <div class="timeline">
+      <div class="stop">
+        <div class="time">7:35</div>
+        <h3>長崎空港 発 <span style="font-size:11px;color:var(--gold);letter-spacing:.1em;">SKYMARK</span></h3>
+        <p>出発。午前は飛行機の遅延が最大のリスク。</p>
+      </div>
+      <div class="stop">
+        <div class="time">8:40</div>
+        <h3>神戸空港 着</h3>
+        <p>ホテルには寄らず、会場へ直行。</p>
+        <p class="route">神戸空港駅 → ポートライナー → 市民広場駅</p>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;origin=%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF&amp;destination=%E7%A5%9E%E6%88%B8%E5%9B%BD%E9%9A%9B%E4%BC%9A%E8%AD%B0%E5%A0%B4&amp;destination_place_id=ChIJs0HEgxqOAGARyxuRyy7Ny54&amp;travelmode=transit" target="_blank" rel="noopener" class="tt-btn">🚃 経路・乗換案内（神戸空港→会場）</a>
+      </div>
+      <div class="stop key">
+        <div class="time">9:15<small>〜9:30</small></div>
+        <h3>到着 → 参加受付</h3>
+        <p><strong>総合案内（参加受付）：神戸国際展示場 1号館1F 展示室</strong>（6月20日 7:30〜17:30）。QRを提示して参加証を発行（完全事前登録制）。</p>
+        <p>その後、神戸国際会議場B1階クロークに荷物を預け、5階・第17会場へ。受付（展示場）と会場（会議場）は隣接の別棟。</p>
+      </div>
+      <div class="stop">
+        <div class="time">9:40<small>〜9:50</small></div>
+        <h3>第17会場で着席</h3>
+        <p>最初の演題なので、定刻なら余裕あり。</p>
+      </div>
+    </div>
+
+    <!-- 塚原さん -->
+    <div class="talk">
+      <div class="tag">Presentation No.1</div>
+      <h3>塚原さんの発表</h3>
+      <div class="grid">
+        <div><span>Time</span><strong>10:10 開始</strong></div>
+        <div><span>Order</span><strong>1番目 / 7人</strong></div>
+        <div><span>Session</span><strong>10:10–11:10</strong></div>
+        <div class="wide"><span>Venue</span><strong>神戸国際会議場 5階・第17会場</strong></div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="stop">
+        <div class="time">11:10<small>〜12:20</small></div>
+        <h3>セッション終了 → 会場をぶらぶら</h3>
+        <p>荷物はクロークに預けたまま、企業展示ブース・ポスターを見学。</p>
+      </div>
+      <div class="stop">
+        <div class="time">12:30<small>〜13:30</small></div>
+        <h3>ランチョンセミナーで昼食</h3>
+        <p>事前申込済みの整理券を確認。未申込なら参加証発行後に当日整理券を取得（6/20 7:30〜11:30・神戸国際展示場1号館1F・先着順）。満席・配布終了時は一般昼食へ。</p>
+      </div>
+      <div class="stop">
+        <div class="time">13:30<small>〜14:00</small></div>
+        <h3>会場見学・荷物回収</h3>
+        <p>展示・ポスターをもう少し見て、クロークで荷物回収。</p>
+      </div>
+      <div class="stop">
+        <div class="time">14:00</div>
+        <h3>神戸国際会議場 出発</h3>
+        <p>クロークで荷物回収。所要 約45〜50分。</p>
+        <p class="route">市民広場駅 → ポートライナー三宮 → JR三ノ宮 → 新快速 → 大阪駅</p>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%B8%82%E6%B0%91%E5%BA%83%E5%A0%B4%E9%A7%85&amp;origin_place_id=ChIJ890uXxqOAGARfLsM7duJ8A4&amp;destination=%E5%A4%A7%E9%98%AA%E9%A7%85&amp;travelmode=transit" target="_blank" rel="noopener" class="tt-btn">🚃 経路・乗換案内（市民広場→大阪）</a>
+      </div>
+      <div class="stop key">
+        <div class="time">15:00</div>
+        <h3>ハートンホテル西梅田 チェックイン</h3>
+        <p>標準14:00〜なのでOK。慰労会まで約3時間、休憩・着替え。</p>
+        <p style="font-size:12px;margin-top:2px;"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hearton+Hotel+Nishi+Umeda&amp;query_place_id=ChIJdZvqiIzmAGAR7YamJLXfPK4" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">📍 ハートンホテル西梅田（大阪市北区梅田3-3-55）</a></p>
+      </div>
+      <div class="stop key">
+        <div class="time">18:10</div>
+        <h3>ホテル発 → アウトバックへ</h3>
+        <p>四つ橋筋を南へ、徒歩約8分（約550m）。雨なら地下街経由も可。</p>
+        <p style="font-size:12px;margin-top:2px;"><a href="https://www.google.com/maps/search/?api=1&amp;query=Outback+Steakhouse+Umeda&amp;query_place_id=ChIJxXfH0fLmAGARHt4r1zkhKyw" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">📍 アウトバックステーキハウス 梅田店（大阪市北区堂島1-6-20 堂島アバンザB1F）</a></p>
+      </div>
+    </div>
+    <div class="note"><span class="mk">道順</span><span>大阪駅は<strong>西口</strong>が最も分かりやすく、ホテルまで徒歩約3分（桜橋口からでも約4分）。</span></div>
+
+    <!-- 夜の理想プラン -->
+    <div class="evening">
+      <h4>夜の理想プラン｜慰労会 &amp; 空中庭園</h4>
+      <div class="row"><span class="t">18:10</span><span>ハートンホテル西梅田 発 → 徒歩約8分でアウトバックへ</span></div>
+      <div class="row"><span class="t">18:30</span><span><a href="https://www.google.com/maps/search/?api=1&amp;query=Outback+Steakhouse+Umeda&amp;query_place_id=ChIJxXfH0fLmAGARHt4r1zkhKyw" target="_blank" rel="noopener" style="color:var(--gold-l);text-decoration:underline;">アウトバックステーキハウス 梅田店</a>で慰労会開始（大阪市北区堂島1-6-20 堂島アバンザB1F／西梅田駅 徒歩2分）</span></div>
+      <div class="row"><span class="t">20:40</span><span>慰労会を出て梅田スカイビルへ徒歩移動（約15〜20分）</span></div>
+      <div class="row"><span class="t">21:00</span><span>空中庭園展望台（通常9:30〜22:30／最終入場22:00）</span></div>
+      <div class="row"><span class="t">22:00</span><span>徒歩約15分（約1km）でホテルへ戻る。疲れていればタクシーも可</span></div>
+    </div>
+    <div class="note"><span class="mk">逆算</span><span>空中庭園<strong>21:00着</strong>に合わせるなら、慰労会は20:40頃に退店（徒歩15〜20分）。最終入場22:00なので時間に余裕あり。</span></div>
+
+  </section>
+
+  <!-- DAY 2 -->
+  <div class="day-head">
+    <div class="num">2</div>
+    <div class="dh-txt">
+      <h2>6月21日（日）</h2>
+      <p>梅田 → 神戸 → 長崎</p>
+    </div>
+  </div>
+  <section class="day">
+
+    <div class="timeline">
+      <div class="stop">
+        <div class="time">8:10</div>
+        <h3>ハートンホテル西梅田 出発</h3>
+        <p>朝食・チェックアウト後、スーツケースを持って神戸へ（荷物は大阪に残さない）。JR大阪駅へ徒歩約5分。</p>
+      </div>
+      <div class="stop key">
+        <div class="time">8:30</div>
+        <h3>大阪駅発 新快速</h3>
+        <p><strong>大阪 8:30発 新快速（西明石・姫路方面）→ 三ノ宮 8:52着</strong>（約22分）。1本後の8:45発でも間に合う。<br>※土休日ダイヤ・目安。最新は当日Yahoo乗換等で確認を。</p>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%A4%A7%E9%98%AA%E9%A7%85&amp;destination=%E7%A5%9E%E6%88%B8%E3%83%9D%E3%83%BC%E3%83%88%E3%83%94%E3%82%A2%E3%83%9B%E3%83%86%E3%83%AB&amp;destination_place_id=ChIJC67c9BmOAGARyFhUiBXQzfQ&amp;travelmode=transit" target="_blank" rel="noopener" class="tt-btn">🚃 経路・乗換案内（大阪→ポートピアホテル）</a>
+      </div>
+      <div class="stop">
+        <div class="time">9:00<small>頃</small></div>
+        <h3>三ノ宮で乗換 → ポートライナー</h3>
+        <p>JR三ノ宮から徒歩約5分でポートライナー三宮駅へ。<strong>「神戸空港」方面</strong>に乗車（約10分）。</p>
+        <p class="route">三ノ宮 → ポートライナー → 市民広場駅</p>
+      </div>
+      <div class="stop key">
+        <div class="time">9:25<small>頃</small></div>
+        <h3>神戸ポートピアホテル 到着</h3>
+        <p>南館1階 または 本館B1階のクロークに荷物を預ける → 南館B1階「ルビー」の場所を確認。会場前まで30分以上の余裕。</p>
+      </div>
+      <div class="stop">
+        <div class="time">9:40<small>〜10:05</small></div>
+        <h3>会場前へ → 着席</h3>
+        <p>進行が早まる可能性あり。10:05のセッション開始時点から着席が確実。</p>
+      </div>
+    </div>
+
+    <!-- 藤田さん -->
+    <div class="talk">
+      <div class="tag">Presentation No.4</div>
+      <h3>藤田さんの発表</h3>
+      <div class="grid">
+        <div><span>Time</span><strong>10:29〜10:35頃</strong></div>
+        <div><span>Order</span><strong>4番目 / 8人</strong></div>
+        <div><span>Session</span><strong>10:05–11:10</strong></div>
+        <div class="wide"><span>Venue</span><strong>神戸ポートピアホテル 南館B1階「ルビー」</strong></div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="stop">
+        <div class="time">11:10</div>
+        <h3>セッション終了</h3>
+        <p>クロークで荷物回収 → 昼食。時間に余裕あり。</p>
+      </div>
+      <div class="stop">
+        <div class="time">11:20<small>〜12:30</small></div>
+        <h3>昼食</h3>
+        <p>ポートピアホテル周辺で／または空港で。空港でしっかり食べるなら保安検査前のレストランで（ラウンジ神戸は食事提供なし）。</p>
+      </div>
+      <div class="stop">
+        <div class="time">13:15<small>〜13:30</small></div>
+        <h3>神戸空港 到着</h3>
+        <p>ポートライナーは<strong>「神戸空港」方面</strong>（三宮と逆向き）に乗車。約8分。</p>
+        <p class="route">市民広場駅 → ポートライナー → 神戸空港駅</p>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%B8%82%E6%B0%91%E5%BA%83%E5%A0%B4%E9%A7%85&amp;origin_place_id=ChIJ890uXxqOAGARfLsM7duJ8A4&amp;destination=%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF&amp;travelmode=transit" target="_blank" rel="noopener" class="tt-btn">🚃 経路・乗換案内（市民広場→神戸空港）</a>
+      </div>
+      <div class="stop key">
+        <div class="time">〜14:50</div>
+        <h3>ラウンジ神戸で休憩 <span style="font-size:11px;color:var(--gold);letter-spacing:.1em;">AMEX 無料</span></h3>
+        <p>スカイマークでチェックイン → 保安検査 → 2階・搭乗待合室内のラウンジへ（検査場抜けて左すぐ）。アメックス＋当日搭乗券で無料、同伴者1名も無料。コーヒー・紅茶・ソフトドリンク・Wi-Fiあり。食事提供なし。</p>
+      </div>
+      <div class="stop key">
+        <div class="time">14:50</div>
+        <h3>神戸空港 発 <span style="font-size:11px;color:var(--gold);letter-spacing:.1em;">SKYMARK</span></h3>
+      </div>
+      <div class="stop">
+        <div class="time">16:05</div>
+        <h3>長崎空港 着</h3>
+        <p>お疲れさまでした。</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 持ち物チェックリスト -->
+  <div class="day-head">
+    <div class="num">✓</div>
+    <div class="dh-txt">
+      <h2>持ち物チェックリスト</h2>
+      <p>タップでチェック・状態は保存されます</p>
+    </div>
+  </div>
+  <section class="checklist">
+    <div class="cl-progress">
+      <div class="bar"><i id="clBar"></i></div>
+      <div class="count" id="clCount">0/0</div>
+    </div>
+
+    <div class="cl-group">
+      <h4>事前準備（前日まで）</h4>
+      <div class="cl-item key"><div class="cl-box"></div><div class="lbl">行きたい演題・講演をチェック<small>プログラムで聴きたいセッションに印をつけておく</small></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="lbl">6/21朝の新快速の実便を確認<small>Yahoo乗換等で確定（目安は大阪8:30発）</small></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="lbl">ランチョンセミナーの整理券を確認</div></div>
+    </div>
+
+    <div class="cl-group">
+      <h4>絶対忘れない（スマホに集約）</h4>
+      <div class="cl-item key"><div class="cl-box"></div><div class="lbl">学会参加証のQR<small>事前登録制／スクショ保存しておく</small></div></div>
+      <div class="cl-item key"><div class="cl-box"></div><div class="lbl">スカイマーク往復のQR・eチケット<small>スクショ保存しておく</small></div></div>
+      <div class="cl-item key"><div class="cl-box"></div><div class="lbl">アメックスカード<small>ラウンジ神戸で使用・忘れがち</small></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="lbl">スマホ・モバイルバッテリー</div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="lbl">財布・現金</div></div>
+    </div>
+
+    <div class="cl-group">
+      <h4>服装・身だしなみ</h4>
+      <div class="cl-item key"><div class="cl-box"></div><div class="lbl">スーツ一式<small>前日に準備</small></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="lbl">替えのシャツ</div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="lbl">下着・靴下（1泊分）</div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="lbl">汗拭きシート</div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="lbl">洗面用具（最小限）<small>歯ブラシ・タオル等はホテルにあり</small></div></div>
+    </div>
+
+    <div class="cl-group">
+      <h4>あると安心</h4>
+      <div class="cl-item key"><div class="cl-box"></div><div class="lbl">折りたたみ傘<small>6月下旬・梅雨／空中庭園は屋外</small></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="lbl">スマホ充電器</div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="lbl">名刺</div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="lbl">常備薬</div></div>
+    </div>
+
+    <button class="cl-reset" id="clReset">すべてのチェックを外す</button>
+  </section>
+
+  <div class="foot">第71回 日本透析医学会総会 &nbsp;<span>·</span>&nbsp; Kobe &amp; Osaka &nbsp;<span>·</span>&nbsp; 2026</div>
+
+</div>
+
+<script>
+(function(){
+  var items = Array.prototype.slice.call(document.querySelectorAll('.cl-item'));
+  var bar = document.getElementById('clBar');
+  var count = document.getElementById('clCount');
+  var KEY = 'mochimono_check_71jsdt';
+
+  // ラベルからキーを作る（順序が変わっても安定）
+  items.forEach(function(el, i){
+    el.dataset.k = (el.querySelector('.lbl').textContent.trim().slice(0,24)) + '_' + i;
+  });
+
+  function load(){
+    try{
+      var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+      items.forEach(function(el){
+        if(saved[el.dataset.k]) el.classList.add('checked');
+      });
+    }catch(e){}
+  }
+  function save(){
+    try{
+      var o = {};
+      items.forEach(function(el){ if(el.classList.contains('checked')) o[el.dataset.k]=1; });
+      localStorage.setItem(KEY, JSON.stringify(o));
+    }catch(e){}
+  }
+  function update(){
+    var done = items.filter(function(el){return el.classList.contains('checked');}).length;
+    count.textContent = done + '/' + items.length;
+    bar.style.width = (items.length ? (done/items.length*100) : 0) + '%';
+  }
+
+  items.forEach(function(el){
+    el.addEventListener('click', function(){
+      el.classList.toggle('checked');
+      save(); update();
+    });
+  });
+  document.getElementById('clReset').addEventListener('click', function(){
+    items.forEach(function(el){ el.classList.remove('checked'); });
+    save(); update();
+  });
+
+  load(); update();
+})();
+</script>
+
+</body>
+</html>
