@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第71回日本透析医学会総会・出張のしおり</title>
+<title>出張のしおり</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap');
 
@@ -54,7 +54,6 @@
       repeating-linear-gradient(90deg, rgba(244,239,228,.04) 0 1px, transparent 1px 64px);
     opacity:.6;
   }
-  /* 港の波紋ライン */
   .cover .wave{
     position:absolute;
     right:-60px;bottom:-40px;
@@ -145,6 +144,96 @@
 
   section.day{padding:0 48px 20px}
 
+
+
+  /* ===== DAY 1 / DAY 2 カラーテーマ ===== */
+  .day-chapter{
+    --day-accent:var(--gold);
+    --day-deep:var(--ink);
+    --day-mid:var(--ink-2);
+    --day-soft:rgba(176,137,73,.10);
+    --day-line:rgba(176,137,73,.32);
+    position:relative;
+    margin-top:18px;
+    padding-bottom:10px;
+    border-radius:6px;
+  }
+  .day-chapter:first-of-type{margin-top:0}
+  .day-chapter.day-1{
+    --day-accent:#3f8399;      /* DAY 1：スマホでも見やすい明るめの青緑 */
+    --day-deep:#12384d;
+    --day-mid:#1e5b70;
+    --day-soft:rgba(124,197,218,.24);
+    --day-line:rgba(63,131,153,.34);
+    background:linear-gradient(180deg, rgba(154,215,232,.26) 0%, rgba(154,215,232,.11) 100%);
+    box-shadow:inset 0 0 0 1px rgba(63,131,153,.12);
+  }
+  .day-chapter.day-2{
+    --day-accent:#b2667f;      /* DAY 2：スマホでも見やすい明るめのワイン色 */
+    --day-deep:#4b2634;
+    --day-mid:#754255;
+    --day-soft:rgba(231,184,199,.26);
+    --day-line:rgba(178,102,127,.36);
+    background:linear-gradient(180deg, rgba(239,199,211,.28) 0%, rgba(239,199,211,.11) 100%);
+    box-shadow:inset 0 0 0 1px rgba(178,102,127,.12);
+  }
+  .day-chapter .day-head{
+    border-bottom-color:var(--day-accent);
+    background:linear-gradient(90deg,var(--day-soft),transparent 78%);
+  }
+  .day-chapter .day-head .num,
+  .day-chapter .day-head .dh-txt p,
+  .day-chapter .stop .time,
+  .day-chapter .stop .route,
+  .day-chapter .note .mk,
+  .day-chapter .transit-step .ts-time{
+    color:var(--day-accent);
+  }
+  .day-chapter section.day{
+    background:linear-gradient(180deg,var(--day-soft),transparent 180px);
+  }
+  .day-chapter .timeline::before{
+    background:var(--day-line);
+  }
+  .day-chapter .stop::before{
+    border-color:var(--day-accent);
+  }
+  .day-chapter .stop.key::before{
+    background:var(--day-accent);
+    box-shadow:0 0 0 4px var(--day-soft);
+  }
+  .day-chapter .talk,
+  .day-chapter .evening{
+    background:linear-gradient(160deg,var(--day-deep),var(--day-mid));
+  }
+  .day-chapter .talk::before{
+    background:linear-gradient(var(--gold-l),var(--day-accent));
+  }
+  .day-chapter .note{
+    background:var(--day-soft);
+    border-left-color:var(--day-accent);
+  }
+  .day-chapter .transit-drawer{
+    border-color:var(--day-line);
+    background:var(--day-soft);
+  }
+  .day-chapter .transit-drawer summary::after,
+  .day-chapter .tt-btn{
+    background:var(--day-accent);
+    color:#fff;
+  }
+  .day-chapter .transit-drawer[open] summary{
+    border-bottom-color:var(--day-line);
+    background:var(--day-soft);
+  }
+  .day-chapter .transit-step{
+    border-bottom-color:var(--day-line);
+  }
+  .day-chapter .tt-btn:hover{
+    background:var(--day-accent);
+    filter:brightness(.92);
+  }
+
   /* ===== タイムライン ===== */
   .timeline{
     position:relative;
@@ -195,6 +284,9 @@
     margin-top:3px;letter-spacing:.02em;
   }
   .stop .route::before{content:"→ ";color:var(--gold)}
+
+  /* 見出し横のバッジ（SKYMARK 等） */
+  .badge{font-size:11px;color:var(--gold);letter-spacing:.1em;font-weight:500}
 
   /* ===== 発表カード（主役） ===== */
   .talk{
@@ -307,6 +399,75 @@
     .talk .grid{grid-template-columns:repeat(2,1fr)}
   }
 
+
+  /* ===== 電車・乗換のひきだし ===== */
+  .transit-drawer{
+    margin-top:9px;
+    scroll-margin-top:12px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:rgba(236,229,212,.72);
+    overflow:hidden;
+  }
+  .transit-drawer summary{
+    list-style:none;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:10px 13px;
+    color:var(--ink);
+    font-size:12.5px;
+    font-weight:700;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .transit-drawer summary::-webkit-details-marker{display:none}
+  .transit-drawer summary::after{
+    content:"＋";
+    flex-shrink:0;
+    width:22px;height:22px;
+    display:grid;place-items:center;
+    border-radius:50%;
+    background:var(--gold);
+    color:var(--paper);
+    font-size:15px;
+    line-height:1;
+    transition:transform .2s ease;
+  }
+  .transit-drawer[open] summary::after{
+    content:"−";
+    transform:rotate(180deg);
+  }
+  .transit-drawer[open] summary{
+    border-bottom:1px solid var(--line);
+    background:rgba(176,137,73,.08);
+  }
+  .transit-body{
+    padding:12px 13px 13px;
+    font-size:12.5px;
+    color:rgba(13,36,56,.82);
+  }
+  .transit-body p{margin-bottom:8px}
+  .transit-body p:last-child{margin-bottom:0}
+  .transit-step{
+    display:grid;
+    grid-template-columns:58px 1fr;
+    gap:10px;
+    padding:7px 0;
+    border-bottom:1px dotted var(--line);
+  }
+  .transit-step:last-of-type{border-bottom:none}
+  .transit-step .ts-time{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    font-size:15px;
+    color:var(--sea);
+    white-space:nowrap;
+  }
+  .transit-step strong{color:var(--ink)}
+  .transit-body .tt-btn{margin-top:10px}
+
   @media print{
     body{background:#fff}
     .talk,.evening{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -381,7 +542,7 @@
   }
   .cl-reset:hover{background:var(--paper-2)}
 
-  /* ===== 時刻表ボタン ===== */
+  /* ===== 経路ボタン ===== */
   .tt-btn{
     display:inline-flex;align-items:center;gap:5px;
     font-family:'Zen Kaku Gothic New',sans-serif;
@@ -393,277 +554,605 @@
     -webkit-tap-highlight-color:transparent;
   }
   .tt-btn:hover{background:var(--gold)}
+
+  /* ===== Googleマップリンク（TRIP側はデータのみ） ===== */
+  .map-link{
+    display:inline-flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:2px;
+    margin-top:8px;
+    padding:8px 11px;
+    border:1px solid rgba(176,137,73,.42);
+    border-radius:6px;
+    color:var(--gold);
+    text-decoration:none;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.5;
+    -webkit-tap-highlight-color:transparent;
+    transition:background .15s,border-color .15s,transform .15s;
+  }
+  .map-link:hover{
+    background:rgba(176,137,73,.08);
+    border-color:var(--gold);
+  }
+  .map-link:active{transform:scale(.99)}
+  .map-link-sub{
+    font-size:11.5px;
+    font-weight:400;
+    color:rgba(13,36,56,.68);
+  }
+  .evening .map-link{
+    color:var(--gold-l);
+    border-color:rgba(207,167,101,.45);
+  }
+  .evening .map-link:hover{background:rgba(207,167,101,.09)}
+  .evening .map-link-sub{color:rgba(244,239,228,.72)}
+  .map-link.is-invalid{
+    pointer-events:none;
+    opacity:.55;
+    border-style:dashed;
+  }
+
   @media(max-width:600px){
     section.checklist{padding:0 22px 24px}
+    .map-link{display:flex;width:100%}
+  }
+
+
+  /* ===== 最終ページ：主要地点・Googleマップ一覧 ===== */
+  section.map-directory{padding:4px 48px 30px}
+  .map-directory-intro{
+    margin:18px 0 14px;
+    font-size:13px;
+    color:rgba(13,36,56,.72);
+  }
+  .place-drawer{
+    margin-bottom:11px;
+    scroll-margin-top:12px;
+    border:1px solid rgba(47,111,134,.28);
+    border-radius:8px;
+    background:rgba(255,255,255,.38);
+    overflow:hidden;
+    box-shadow:0 3px 12px rgba(13,36,56,.05);
+  }
+  .place-drawer summary{
+    list-style:none;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 15px;
+    font-family:'Shippori Mincho',serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--ink);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .place-drawer summary::-webkit-details-marker{display:none}
+  .place-drawer summary::after{
+    content:"＋";
+    flex-shrink:0;
+    width:26px;height:26px;
+    display:grid;place-items:center;
+    border-radius:50%;
+    background:var(--sea);
+    color:#fff;
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:17px;
+    line-height:1;
+    transition:transform .2s ease;
+  }
+  .place-drawer[open] summary{
+    background:rgba(47,111,134,.08);
+    border-bottom:1px solid rgba(47,111,134,.22);
+  }
+  .place-drawer[open] summary::after{
+    content:"−";
+    transform:rotate(180deg);
+  }
+  .place-list{padding:10px}
+  .place-card{
+    display:grid;
+    grid-template-columns:34px 1fr auto;
+    align-items:center;
+    gap:11px;
+    padding:12px 11px;
+    margin-bottom:8px;
+    border:1px solid rgba(176,137,73,.24);
+    border-radius:7px;
+    background:rgba(244,239,228,.82);
+    color:var(--ink);
+    text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
+    transition:background .15s,border-color .15s,transform .15s;
+  }
+  .place-card:last-child{margin-bottom:0}
+  .place-card:hover{
+    background:#fffaf0;
+    border-color:rgba(176,137,73,.55);
+  }
+  .place-card:active{transform:scale(.995)}
+  .place-icon{
+    width:34px;height:34px;
+    display:grid;place-items:center;
+    border-radius:50%;
+    background:rgba(47,111,134,.11);
+    font-size:17px;
+  }
+  .place-card.route .place-icon{background:rgba(152,86,106,.12)}
+  .place-name{
+    display:block;
+    font-size:13.5px;
+    font-weight:700;
+    line-height:1.45;
+  }
+  .place-address{
+    display:block;
+    margin-top:2px;
+    font-size:11.5px;
+    line-height:1.5;
+    color:rgba(13,36,56,.64);
+  }
+  .place-action{
+    font-size:17px;
+    color:var(--sea);
+    padding-left:5px;
+  }
+  .map-directory-note{
+    margin-top:13px;
+    padding:10px 12px;
+    border-left:3px solid var(--gold);
+    background:var(--paper-2);
+    font-size:11.5px;
+    color:rgba(13,36,56,.72);
+  }
+
+  @media(max-width:600px){
+    section.map-directory{padding:2px 22px 25px}
+    .place-drawer summary{padding:13px 12px;font-size:14px}
+    .place-list{padding:8px}
+    .place-card{grid-template-columns:32px 1fr auto;padding:11px 9px;gap:9px}
+    .place-icon{width:32px;height:32px}
+    .place-name{font-size:13px}
+    .place-address{font-size:11px}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .transit-drawer summary::after,
+    .map-link{transition:none}
   }
 </style>
 </head>
 <body>
-<div class="book">
-
-  <!-- 表紙 -->
-  <header class="cover">
-    <div class="wave"></div>
-    <div class="eyebrow">Itinerary &mdash; Kobe &amp; Osaka</div>
-    <h1>第71回<br>日本透析医学会総会<br><span class="em">出張のしおり</span></h1>
-    <div class="sub">神 戸 ・ 大 阪</div>
-    <div class="meta">
-      <div><span>Date</span><strong>2026.6.20 — 6.21</strong></div>
-      <div><span>Route</span><strong>長崎 ⇄ 神戸</strong></div>
-      <div><span>Flight</span><strong>往復 スカイマーク</strong></div>
-      <div><span>Talks</span><strong>塚原さん／藤田さん</strong></div>
-    </div>
-  </header>
-
-  <!-- DAY 1 -->
-  <div class="day-head">
-    <div class="num">1</div>
-    <div class="dh-txt">
-      <h2>6月20日（土）</h2>
-      <p>長崎 → 神戸 → 梅田</p>
-    </div>
-  </div>
-  <section class="day">
-
-    <div class="timeline">
-      <div class="stop">
-        <div class="time">7:35</div>
-        <h3>長崎空港 発 <span style="font-size:11px;color:var(--gold);letter-spacing:.1em;">SKYMARK</span></h3>
-        <p>出発。午前は飛行機の遅延が最大のリスク。</p>
-      </div>
-      <div class="stop">
-        <div class="time">8:40</div>
-        <h3>神戸空港 着</h3>
-        <p>ホテルには寄らず、会場へ直行。</p>
-        <p class="route">神戸空港駅 → ポートライナー → 市民広場駅</p>
-        <a href="https://www.google.com/maps/dir/?api=1&amp;origin=%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF&amp;destination=%E7%A5%9E%E6%88%B8%E5%9B%BD%E9%9A%9B%E4%BC%9A%E8%AD%B0%E5%A0%B4&amp;destination_place_id=ChIJs0HEgxqOAGARyxuRyy7Ny54&amp;travelmode=transit" target="_blank" rel="noopener" class="tt-btn">🚃 経路・乗換案内（神戸空港→会場）</a>
-      </div>
-      <div class="stop key">
-        <div class="time">9:15<small>〜9:30</small></div>
-        <h3>到着 → 参加受付</h3>
-        <p><strong>総合案内（参加受付）：神戸国際展示場 1号館1F 展示室</strong>（6月20日 7:30〜17:30）。QRを提示して参加証を発行（完全事前登録制）。</p>
-        <p>その後、神戸国際会議場B1階クロークに荷物を預け、5階・第17会場へ。受付（展示場）と会場（会議場）は隣接の別棟。</p>
-      </div>
-      <div class="stop">
-        <div class="time">9:40<small>〜9:50</small></div>
-        <h3>第17会場で着席</h3>
-        <p>最初の演題なので、定刻なら余裕あり。</p>
-      </div>
-    </div>
-
-    <!-- 塚原さん -->
-    <div class="talk">
-      <div class="tag">Presentation No.1</div>
-      <h3>塚原さんの発表</h3>
-      <div class="grid">
-        <div><span>Time</span><strong>10:10 開始</strong></div>
-        <div><span>Order</span><strong>1番目 / 7人</strong></div>
-        <div><span>Session</span><strong>10:10–11:10</strong></div>
-        <div class="wide"><span>Venue</span><strong>神戸国際会議場 5階・第17会場</strong></div>
-      </div>
-    </div>
-
-    <div class="timeline">
-      <div class="stop">
-        <div class="time">11:10<small>〜12:20</small></div>
-        <h3>セッション終了 → 会場をぶらぶら</h3>
-        <p>荷物はクロークに預けたまま、企業展示ブース・ポスターを見学。</p>
-      </div>
-      <div class="stop">
-        <div class="time">12:30<small>〜13:30</small></div>
-        <h3>ランチョンセミナーで昼食</h3>
-        <p>事前申込済みの整理券を確認。未申込なら参加証発行後に当日整理券を取得（6/20 7:30〜11:30・神戸国際展示場1号館1F・先着順）。満席・配布終了時は一般昼食へ。</p>
-      </div>
-      <div class="stop">
-        <div class="time">13:30<small>〜14:00</small></div>
-        <h3>会場見学・荷物回収</h3>
-        <p>展示・ポスターをもう少し見て、クロークで荷物回収。</p>
-      </div>
-      <div class="stop">
-        <div class="time">14:00</div>
-        <h3>神戸国際会議場 出発</h3>
-        <p>クロークで荷物回収。所要 約45〜50分。</p>
-        <p class="route">市民広場駅 → ポートライナー三宮 → JR三ノ宮 → 新快速 → 大阪駅</p>
-        <a href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%B8%82%E6%B0%91%E5%BA%83%E5%A0%B4%E9%A7%85&amp;origin_place_id=ChIJ890uXxqOAGARfLsM7duJ8A4&amp;destination=%E5%A4%A7%E9%98%AA%E9%A7%85&amp;travelmode=transit" target="_blank" rel="noopener" class="tt-btn">🚃 経路・乗換案内（市民広場→大阪）</a>
-      </div>
-      <div class="stop key">
-        <div class="time">15:00</div>
-        <h3>ハートンホテル西梅田 チェックイン</h3>
-        <p>標準14:00〜なのでOK。慰労会まで約3時間、休憩・着替え。</p>
-        <p style="font-size:12px;margin-top:2px;"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hearton+Hotel+Nishi+Umeda&amp;query_place_id=ChIJdZvqiIzmAGAR7YamJLXfPK4" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">📍 ハートンホテル西梅田（大阪市北区梅田3-3-55）</a></p>
-      </div>
-      <div class="stop key">
-        <div class="time">18:10</div>
-        <h3>ホテル発 → アウトバックへ</h3>
-        <p>四つ橋筋を南へ、徒歩約8分（約550m）。雨なら地下街経由も可。</p>
-        <p style="font-size:12px;margin-top:2px;"><a href="https://www.google.com/maps/search/?api=1&amp;query=Outback+Steakhouse+Umeda&amp;query_place_id=ChIJxXfH0fLmAGARHt4r1zkhKyw" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">📍 アウトバックステーキハウス 梅田店（大阪市北区堂島1-6-20 堂島アバンザB1F）</a></p>
-      </div>
-    </div>
-    <div class="note"><span class="mk">道順</span><span>大阪駅は<strong>西口</strong>が最も分かりやすく、ホテルまで徒歩約3分（桜橋口からでも約4分）。</span></div>
-
-    <!-- 夜の理想プラン -->
-    <div class="evening">
-      <h4>夜の理想プラン｜慰労会 &amp; 空中庭園</h4>
-      <div class="row"><span class="t">18:10</span><span>ハートンホテル西梅田 発 → 徒歩約8分でアウトバックへ</span></div>
-      <div class="row"><span class="t">18:30</span><span><a href="https://www.google.com/maps/search/?api=1&amp;query=Outback+Steakhouse+Umeda&amp;query_place_id=ChIJxXfH0fLmAGARHt4r1zkhKyw" target="_blank" rel="noopener" style="color:var(--gold-l);text-decoration:underline;">アウトバックステーキハウス 梅田店</a>で慰労会開始（大阪市北区堂島1-6-20 堂島アバンザB1F／西梅田駅 徒歩2分）</span></div>
-      <div class="row"><span class="t">20:40</span><span>慰労会を出て梅田スカイビルへ徒歩移動（約15〜20分）</span></div>
-      <div class="row"><span class="t">21:00</span><span>空中庭園展望台（通常9:30〜22:30／最終入場22:00）</span></div>
-      <div class="row"><span class="t">22:00</span><span>徒歩約15分（約1km）でホテルへ戻る。疲れていればタクシーも可</span></div>
-    </div>
-    <div class="note"><span class="mk">逆算</span><span>空中庭園<strong>21:00着</strong>に合わせるなら、慰労会は20:40頃に退店（徒歩15〜20分）。最終入場22:00なので時間に余裕あり。</span></div>
-
-  </section>
-
-  <!-- DAY 2 -->
-  <div class="day-head">
-    <div class="num">2</div>
-    <div class="dh-txt">
-      <h2>6月21日（日）</h2>
-      <p>梅田 → 神戸 → 長崎</p>
-    </div>
-  </div>
-  <section class="day">
-
-    <div class="timeline">
-      <div class="stop">
-        <div class="time">8:10</div>
-        <h3>ハートンホテル西梅田 出発</h3>
-        <p>朝食・チェックアウト後、スーツケースを持って神戸へ（荷物は大阪に残さない）。JR大阪駅へ徒歩約5分。</p>
-      </div>
-      <div class="stop key">
-        <div class="time">8:30</div>
-        <h3>大阪駅発 新快速</h3>
-        <p><strong>大阪 8:30発 新快速（西明石・姫路方面）→ 三ノ宮 8:52着</strong>（約22分）。1本後の8:45発でも間に合う。<br>※土休日ダイヤ・目安。最新は当日Yahoo乗換等で確認を。</p>
-        <a href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%A4%A7%E9%98%AA%E9%A7%85&amp;destination=%E7%A5%9E%E6%88%B8%E3%83%9D%E3%83%BC%E3%83%88%E3%83%94%E3%82%A2%E3%83%9B%E3%83%86%E3%83%AB&amp;destination_place_id=ChIJC67c9BmOAGARyFhUiBXQzfQ&amp;travelmode=transit" target="_blank" rel="noopener" class="tt-btn">🚃 経路・乗換案内（大阪→ポートピアホテル）</a>
-      </div>
-      <div class="stop">
-        <div class="time">9:00<small>頃</small></div>
-        <h3>三ノ宮で乗換 → ポートライナー</h3>
-        <p>JR三ノ宮から徒歩約5分でポートライナー三宮駅へ。<strong>「神戸空港」方面</strong>に乗車（約10分）。</p>
-        <p class="route">三ノ宮 → ポートライナー → 市民広場駅</p>
-      </div>
-      <div class="stop key">
-        <div class="time">9:25<small>頃</small></div>
-        <h3>神戸ポートピアホテル 到着</h3>
-        <p>南館1階 または 本館B1階のクロークに荷物を預ける → 南館B1階「ルビー」の場所を確認。会場前まで30分以上の余裕。</p>
-      </div>
-      <div class="stop">
-        <div class="time">9:40<small>〜10:05</small></div>
-        <h3>会場前へ → 着席</h3>
-        <p>進行が早まる可能性あり。10:05のセッション開始時点から着席が確実。</p>
-      </div>
-    </div>
-
-    <!-- 藤田さん -->
-    <div class="talk">
-      <div class="tag">Presentation No.4</div>
-      <h3>藤田さんの発表</h3>
-      <div class="grid">
-        <div><span>Time</span><strong>10:29〜10:35頃</strong></div>
-        <div><span>Order</span><strong>4番目 / 8人</strong></div>
-        <div><span>Session</span><strong>10:05–11:10</strong></div>
-        <div class="wide"><span>Venue</span><strong>神戸ポートピアホテル 南館B1階「ルビー」</strong></div>
-      </div>
-    </div>
-
-    <div class="timeline">
-      <div class="stop">
-        <div class="time">11:10</div>
-        <h3>セッション終了</h3>
-        <p>クロークで荷物回収 → 昼食。時間に余裕あり。</p>
-      </div>
-      <div class="stop">
-        <div class="time">11:20<small>〜12:30</small></div>
-        <h3>昼食</h3>
-        <p>ポートピアホテル周辺で／または空港で。空港でしっかり食べるなら保安検査前のレストランで（ラウンジ神戸は食事提供なし）。</p>
-      </div>
-      <div class="stop">
-        <div class="time">13:15<small>〜13:30</small></div>
-        <h3>神戸空港 到着</h3>
-        <p>ポートライナーは<strong>「神戸空港」方面</strong>（三宮と逆向き）に乗車。約8分。</p>
-        <p class="route">市民広場駅 → ポートライナー → 神戸空港駅</p>
-        <a href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%B8%82%E6%B0%91%E5%BA%83%E5%A0%B4%E9%A7%85&amp;origin_place_id=ChIJ890uXxqOAGARfLsM7duJ8A4&amp;destination=%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF&amp;travelmode=transit" target="_blank" rel="noopener" class="tt-btn">🚃 経路・乗換案内（市民広場→神戸空港）</a>
-      </div>
-      <div class="stop key">
-        <div class="time">〜14:50</div>
-        <h3>ラウンジ神戸で休憩 <span style="font-size:11px;color:var(--gold);letter-spacing:.1em;">AMEX 無料</span></h3>
-        <p>スカイマークでチェックイン → 保安検査 → 2階・搭乗待合室内のラウンジへ（検査場抜けて左すぐ）。アメックス＋当日搭乗券で無料、同伴者1名も無料。コーヒー・紅茶・ソフトドリンク・Wi-Fiあり。食事提供なし。</p>
-      </div>
-      <div class="stop key">
-        <div class="time">14:50</div>
-        <h3>神戸空港 発 <span style="font-size:11px;color:var(--gold);letter-spacing:.1em;">SKYMARK</span></h3>
-      </div>
-      <div class="stop">
-        <div class="time">16:05</div>
-        <h3>長崎空港 着</h3>
-        <p>お疲れさまでした。</p>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- 持ち物チェックリスト -->
-  <div class="day-head">
-    <div class="num">✓</div>
-    <div class="dh-txt">
-      <h2>持ち物チェックリスト</h2>
-      <p>タップでチェック・状態は保存されます</p>
-    </div>
-  </div>
-  <section class="checklist">
-    <div class="cl-progress">
-      <div class="bar"><i id="clBar"></i></div>
-      <div class="count" id="clCount">0/0</div>
-    </div>
-
-    <div class="cl-group">
-      <h4>事前準備（前日まで）</h4>
-      <div class="cl-item key"><div class="cl-box"></div><div class="lbl">行きたい演題・講演をチェック<small>プログラムで聴きたいセッションに印をつけておく</small></div></div>
-      <div class="cl-item"><div class="cl-box"></div><div class="lbl">6/21朝の新快速の実便を確認<small>Yahoo乗換等で確定（目安は大阪8:30発）</small></div></div>
-      <div class="cl-item"><div class="cl-box"></div><div class="lbl">ランチョンセミナーの整理券を確認</div></div>
-    </div>
-
-    <div class="cl-group">
-      <h4>絶対忘れない（スマホに集約）</h4>
-      <div class="cl-item key"><div class="cl-box"></div><div class="lbl">学会参加証のQR<small>事前登録制／スクショ保存しておく</small></div></div>
-      <div class="cl-item key"><div class="cl-box"></div><div class="lbl">スカイマーク往復のQR・eチケット<small>スクショ保存しておく</small></div></div>
-      <div class="cl-item key"><div class="cl-box"></div><div class="lbl">アメックスカード<small>ラウンジ神戸で使用・忘れがち</small></div></div>
-      <div class="cl-item"><div class="cl-box"></div><div class="lbl">スマホ・モバイルバッテリー</div></div>
-      <div class="cl-item"><div class="cl-box"></div><div class="lbl">財布・現金</div></div>
-    </div>
-
-    <div class="cl-group">
-      <h4>服装・身だしなみ</h4>
-      <div class="cl-item key"><div class="cl-box"></div><div class="lbl">スーツ一式<small>前日に準備</small></div></div>
-      <div class="cl-item"><div class="cl-box"></div><div class="lbl">替えのシャツ</div></div>
-      <div class="cl-item"><div class="cl-box"></div><div class="lbl">下着・靴下（1泊分）</div></div>
-      <div class="cl-item"><div class="cl-box"></div><div class="lbl">汗拭きシート</div></div>
-      <div class="cl-item"><div class="cl-box"></div><div class="lbl">洗面用具（最小限）<small>歯ブラシ・タオル等はホテルにあり</small></div></div>
-    </div>
-
-    <div class="cl-group">
-      <h4>あると安心</h4>
-      <div class="cl-item key"><div class="cl-box"></div><div class="lbl">折りたたみ傘<small>6月下旬・梅雨／空中庭園は屋外</small></div></div>
-      <div class="cl-item"><div class="cl-box"></div><div class="lbl">スマホ充電器</div></div>
-      <div class="cl-item"><div class="cl-box"></div><div class="lbl">名刺</div></div>
-      <div class="cl-item"><div class="cl-box"></div><div class="lbl">常備薬</div></div>
-    </div>
-
-    <button class="cl-reset" id="clReset">すべてのチェックを外す</button>
-  </section>
-
-  <div class="foot">第71回 日本透析医学会総会 &nbsp;<span>·</span>&nbsp; Kobe &amp; Osaka &nbsp;<span>·</span>&nbsp; 2026</div>
-
-</div>
+<div class="book" id="book"></div>
 
 <script>
+/* =====================================================================
+   出張しおり・汎用テンプレート
+   ---------------------------------------------------------------------
+   次の出張で使うときは、下の TRIP オブジェクトを書き換えるだけ。
+   デザイン・レイアウトには一切触れる必要なし。
+
+   ■ ブロックの種類（各 day の blocks に好きな順番で並べる）
+     { type:'timeline', stops:[ ... ] }  … タイムライン（行程）
+        stop = {
+          time:'9:15',        // 時刻
+          sub:'〜9:30',       // 時刻の下の小さい補足（任意）
+          key:true,           // 重要ポイントは true（金の丸印）
+          title:'見出し',
+          badge:'SKYMARK',    // 見出し右の小バッジ（任意）
+          html:'<p>本文</p>', // 本文HTML（任意・<p class="route"> も可）
+          btn:{ label:'🚃 経路', url:'https://...' }, // 通常ボタン（任意）
+          mapLink:{                                  // 場所・徒歩経路リンク（任意）
+            label:'📍 場所を開く',
+            sub:'住所などの補足',
+            url:'https://www.google.com/maps/...'
+          },
+          drawer:{                                  // タップで開く乗換詳細（任意）
+            label:'🚃 乗換の詳細を開く',
+            html:'<p>詳細</p>',
+            btn:{ label:'Googleマップで開く', url:'https://...' }
+          }
+        }
+     { type:'talk', tag:'Presentation No.1', title:'○○さんの発表',
+       grid:[ {label:'Time', value:'10:10 開始'}, {label:'Venue', value:'…', wide:true} ] }
+     { type:'note', mark:'道順', html:'…' }            … 注意・メモ帯
+     { type:'evening', title:'夜の理想プラン｜…',
+       rows:[ {t:'18:10', html:'…', mapLink:{label:'地図',sub:'住所',url:'https://...'}} ] }
+                                                        … 夜のプラン帯
+   ===================================================================== */
+const TRIP = {
+
+  cover:{
+    eyebrow:'Itinerary &mdash; Kobe &amp; Osaka',
+    title:'第71回<br>日本透析医学会総会<br><span class="em">出張のしおり</span>',
+    sub:'神 戸 ・ 大 阪',
+    meta:[
+      {label:'Date',   value:'2026.6.20 — 6.21'},
+      {label:'Route',  value:'長崎 ⇄ 神戸'},
+      {label:'Flight', value:'往復 スカイマーク'},
+      {label:'Talks',  value:'塚原さん／藤田さん'}
+    ]
+  },
+
+  days:[
+    /* ---------------- DAY 1 ---------------- */
+    {
+      num:'1', date:'6月20日（土）', route:'長崎 → 神戸 → 梅田',
+      blocks:[
+        { type:'timeline', stops:[
+          { time:'7:35', title:'長崎空港 発', badge:'SKYMARK',
+            html:'<p>出発。午前は飛行機の遅延が最大のリスク。</p>' },
+          { time:'8:40', title:'神戸空港 着',
+            html:'<p>ホテルには寄らず、会場へ直行。</p>',
+            drawer:{ label:'🚃 神戸空港 → 会場の乗換を開く',
+              html:'<div class="transit-step"><span class="ts-time">到着後</span><span><strong>神戸空港駅</strong>へ移動</span></div><div class="transit-step"><span class="ts-time">約10分</span><span>ポートライナーの<strong>三宮方面</strong>に乗車 → 市民広場駅で下車</span></div><div class="transit-step"><span class="ts-time">下車後</span><span>神戸国際会議場へ徒歩。9:15〜9:30頃に受付到着予定。</span></div>',
+              btn:{ label:'Googleマップで経路を開く',
+                url:'https://www.google.com/maps/dir/?api=1&origin=%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF&destination=%E7%A5%9E%E6%88%B8%E5%9B%BD%E9%9A%9B%E4%BC%9A%E8%AD%B0%E5%A0%B4&destination_place_id=ChIJs0HEgxqOAGARyxuRyy7Ny54&travelmode=transit' } } },
+          { time:'9:15', sub:'〜9:30', key:true, title:'到着 → 参加受付',
+            html:'<p><strong>総合案内（参加受付）：神戸国際展示場 1号館1F 展示室</strong>（6月20日 7:30〜17:30）。QRを提示して参加証を発行（完全事前登録制）。</p><p>その後、神戸国際会議場B1階クロークに荷物を預け、5階・第17会場へ。受付（展示場）と会場（会議場）は隣接の別棟。</p>' },
+          { time:'9:40', sub:'〜9:50', title:'第17会場で着席',
+            html:'<p>最初の演題なので、定刻なら余裕あり。</p>' }
+        ]},
+
+        { type:'talk', tag:'Presentation No.1', title:'塚原さんの発表', grid:[
+          {label:'Time',  value:'10:10 開始'},
+          {label:'Order', value:'1番目 / 7人'},
+          {label:'Session', value:'10:10–11:10'},
+          {label:'Venue', value:'神戸国際会議場 5階・第17会場', wide:true}
+        ]},
+
+        { type:'timeline', stops:[
+          { time:'11:10', sub:'〜12:20', title:'セッション終了 → 会場をぶらぶら',
+            html:'<p>荷物はクロークに預けたまま、企業展示ブース・ポスターを見学。</p>' },
+          { time:'12:30', sub:'〜13:30', title:'ランチョンセミナーで昼食',
+            html:'<p>事前申込済みの整理券を確認。未申込なら参加証発行後に当日整理券を取得（6/20 7:30〜11:30・神戸国際展示場1号館1F・先着順）。満席・配布終了時は一般昼食へ。</p>' },
+          { time:'13:30', sub:'〜15:20', title:'会場見学・荷物回収',
+            html:'<p>展示・ポスター・企業ブースを見学。15:20頃までにクロークで荷物を回収し、15:30に会議場を出発。</p>' },
+          { time:'15:30', title:'神戸国際会議場 出発',
+            html:'<p>市民広場駅へ移動し、16:35頃にホテル到着予定。</p>',
+            drawer:{ label:'🚃 市民広場 → 大阪の時刻・乗換を開く',
+              html:'<div class="transit-step"><span class="ts-time">15:38</span><span><strong>市民広場駅 発</strong>｜ポートライナー三宮行き</span></div><div class="transit-step"><span class="ts-time">15:49頃</span><span>ポートライナー<strong>三宮駅 着</strong> → JR三ノ宮駅へ徒歩約5分</span></div><div class="transit-step"><span class="ts-time">16:07</span><span><strong>JR三ノ宮駅 発</strong>｜大阪・京都方面の新快速（1・2番のりば方面）</span></div><div class="transit-step"><span class="ts-time">16:28頃</span><span><strong>大阪駅 着</strong> → 西口からホテルへ徒歩約3分</span></div>',
+              btn:{ label:'Googleマップで経路を開く',
+                url:'https://www.google.com/maps/dir/?api=1&origin=%E5%B8%82%E6%B0%91%E5%BA%83%E5%A0%B4%E9%A7%85&origin_place_id=ChIJ890uXxqOAGARfLsM7duJ8A4&destination=%E5%A4%A7%E9%98%AA%E9%A7%85&travelmode=transit' } } },
+          { time:'16:35', key:true, title:'ハートンホテル西梅田 チェックイン',
+            html:'<p><strong>道順：</strong>大阪駅は西口が最も分かりやすく、ホテルまで徒歩約3分（桜橋口からでも約4分）。慰労会へ出発する18:00まで約1時間25分、休憩・着替え。</p>',
+            mapLink:{
+              label:'🚶 大阪駅西口からホテルまで徒歩案内',
+              sub:'JR大阪駅 西口 → ハートンホテル西梅田（大阪市北区梅田3-3-55）',
+              url:'https://www.google.com/maps/dir/?api=1&origin=JR%E5%A4%A7%E9%98%AA%E9%A7%85%20%E8%A5%BF%E5%8F%A3&destination=%E3%83%8F%E3%83%BC%E3%83%88%E3%83%B3%E3%83%9B%E3%83%86%E3%83%AB%E8%A5%BF%E6%A2%85%E7%94%B0&destination_place_id=ChIJdZvqiIzmAGAR7YamJLXfPK4&travelmode=walking'
+            } },
+          { time:'18:00', key:true, title:'ホテル発 → アウトバックへ',
+            html:'<p>四つ橋筋を南へ、徒歩約8分（約550m）。雨なら地下街経由も可。</p>',
+            mapLink:{
+              label:'🚶 ホテルからアウトバックまで徒歩案内',
+              sub:'ハートンホテル西梅田 → アウトバックステーキハウス梅田店',
+              url:'https://www.google.com/maps/dir/?api=1&origin=%E3%83%8F%E3%83%BC%E3%83%88%E3%83%B3%E3%83%9B%E3%83%86%E3%83%AB%E8%A5%BF%E6%A2%85%E7%94%B0&origin_place_id=ChIJdZvqiIzmAGAR7YamJLXfPK4&destination=Outback+Steakhouse+Umeda&destination_place_id=ChIJxXfH0fLmAGARHt4r1zkhKyw&travelmode=walking'
+            } }
+        ]},
+
+
+        { type:'evening', title:'夜の理想プラン｜慰労会 &amp; 空中庭園', rows:[
+          {t:'18:00', html:'ハートンホテル西梅田 発 → 徒歩約8分でアウトバックへ'},
+          {t:'18:30', html:'アウトバックステーキハウス 梅田店で慰労会開始（西梅田駅 徒歩2分）',
+            mapLink:{
+              label:'📍 店舗をGoogleマップで開く',
+              sub:'大阪市北区堂島1-6-20 堂島アバンザB1F',
+              url:'https://www.google.com/maps/search/?api=1&query=Outback+Steakhouse+Umeda&query_place_id=ChIJxXfH0fLmAGARHt4r1zkhKyw'
+            }},
+          {t:'20:40', html:'慰労会を出て梅田スカイビルへ徒歩移動（約15〜20分）',
+            mapLink:{
+              label:'🚶 アウトバック → 梅田スカイビル',
+              sub:'タップして徒歩経路を開く',
+              url:'https://www.google.com/maps/dir/?api=1&origin=%E3%82%A2%E3%82%A6%E3%83%88%E3%83%90%E3%83%83%E3%82%AF%E3%82%B9%E3%83%86%E3%83%BC%E3%82%AD%E3%83%8F%E3%82%A6%E3%82%B9+%E6%A2%85%E7%94%B0%E5%BA%97&destination=%E6%A2%85%E7%94%B0%E3%82%B9%E3%82%AB%E3%82%A4%E3%83%93%E3%83%AB+%E7%A9%BA%E4%B8%AD%E5%BA%AD%E5%9C%92%E5%B1%95%E6%9C%9B%E5%8F%B0&travelmode=walking'
+            }},
+          {t:'21:00', html:'空中庭園展望台（通常9:30〜22:30／最終入場22:00）'},
+          {t:'22:00', html:'徒歩約15分（約1km）でホテルへ戻る。疲れていればタクシーも可。',
+            mapLink:{
+              label:'📍 ハートンホテル西梅田へ戻る',
+              sub:'大阪市北区梅田3-3-55｜現在地からの徒歩経路を開く',
+              url:'https://www.google.com/maps/dir/?api=1&destination=Hearton+Hotel+Nishi+Umeda&destination_place_id=ChIJdZvqiIzmAGAR7YamJLXfPK4&travelmode=walking'
+            }}
+        ]},
+
+        { type:'note', mark:'逆算',
+          html:'空中庭園<strong>21:00着</strong>に合わせるなら、慰労会は20:40頃に退店（徒歩15〜20分）。最終入場22:00なので時間に余裕あり。' }
+      ]
+    },
+
+    /* ---------------- DAY 2 ---------------- */
+    {
+      num:'2', date:'6月21日（日）', route:'梅田 → 神戸 → 長崎',
+      blocks:[
+        { type:'timeline', stops:[
+          { time:'8:10', title:'ハートンホテル西梅田 出発',
+            html:'<p>朝食・チェックアウト後、スーツケースを持って神戸へ。JR大阪駅へ徒歩約5分。</p>',
+            drawer:{ label:'🚃 大阪 → ポートピアホテルの時刻・乗換を開く',
+              html:'<div class="transit-step"><span class="ts-time">8:30</span><span><strong>大阪駅 発</strong>｜新快速・西明石／姫路方面</span></div><div class="transit-step"><span class="ts-time">8:52</span><span><strong>JR三ノ宮駅 着</strong> → ポートライナー三宮駅へ徒歩約5分</span></div><div class="transit-step"><span class="ts-time">9:05頃</span><span>ポートライナー<strong>神戸空港方面</strong>に乗車</span></div><div class="transit-step"><span class="ts-time">9:15頃</span><span><strong>市民広場駅 着</strong> → ポートピアホテルへ徒歩</span></div><p><strong>予備：</strong>大阪8:45発 → 三ノ宮9:07着でも間に合うが、8:30発を推奨。運休・遅延は当日に確認。</p>',
+              btn:{ label:'Googleマップで経路を開く',
+                url:'https://www.google.com/maps/dir/?api=1&origin=%E5%A4%A7%E9%98%AA%E9%A7%85&destination=%E7%A5%9E%E6%88%B8%E3%83%9D%E3%83%BC%E3%83%88%E3%83%94%E3%82%A2%E3%83%9B%E3%83%86%E3%83%AB&destination_place_id=ChIJC67c9BmOAGARyFhUiBXQzfQ&travelmode=transit' } } },
+          { time:'9:20', sub:'頃', key:true, title:'神戸ポートピアホテル 到着',
+            html:'<p>南館1階 または 本館B1階のクロークに荷物を預ける → 南館B1階「ルビー」の場所を確認。会場前まで十分な余裕。</p>' },
+          { time:'9:30', sub:'〜10:05', title:'会場前へ → 着席',
+            html:'<p>進行が早まる可能性もあるため、10:05のセッション開始前から着席。</p>' }
+        ]},
+
+        { type:'talk', tag:'Presentation No.4', title:'藤田さんの発表', grid:[
+          {label:'Time',  value:'10:29〜10:35頃'},
+          {label:'Order', value:'4番目 / 8人'},
+          {label:'Session', value:'10:05–11:10'},
+          {label:'Venue', value:'神戸ポートピアホテル 南館B1階「ルビー」', wide:true}
+        ]},
+
+        { type:'timeline', stops:[
+          { time:'11:10', title:'セッション終了',
+            html:'<p>クロークで荷物回収 → 昼食。時間に余裕あり。</p>' },
+          { time:'11:20', sub:'〜12:30', title:'昼食',
+            html:'<p>ポートピアホテル周辺で／または空港で。空港でしっかり食べるなら保安検査前のレストランで。</p>' },
+          { time:'13:15', sub:'〜13:30', title:'神戸空港 到着',
+            html:'<p>余裕をもって空港へ到着し、保安検査へ。</p>',
+            drawer:{ label:'🚃 市民広場 → 神戸空港の乗り方を開く',
+              html:'<div class="transit-step"><span class="ts-time">乗車</span><span><strong>市民広場駅</strong>からポートライナーの神戸空港方面へ</span></div><div class="transit-step"><span class="ts-time">約8分</span><span><strong>神戸空港駅</strong>で下車。三宮方面とは逆方向なので注意。</span></div>',
+              btn:{ label:'Googleマップで経路を開く',
+                url:'https://www.google.com/maps/dir/?api=1&origin=%E5%B8%82%E6%B0%91%E5%BA%83%E5%A0%B4%E9%A7%85&origin_place_id=ChIJ890uXxqOAGARfLsM7duJ8A4&destination=%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF&travelmode=transit' } } },
+          { time:'14:50', key:true, title:'神戸空港 発', badge:'SKYMARK' },
+          { time:'16:05', title:'長崎空港 着',
+            html:'<p>お疲れさまでした。</p>' }
+        ]}
+      ]
+    }
+  ],
+
+  /* ---------------- 持ち物チェックリスト ---------------- */
+  checklist:{
+    key:'mochimono_check_71jsdt',        // 出張ごとに変えると保存が混ざらない
+    intro:'タップでチェック・状態は保存されます',
+    groups:[
+      { title:'事前準備（前日まで）', items:[
+        { key:true, label:'行きたい演題・講演をチェック', sub:'プログラムで聴きたいセッションに印をつけておく' },
+        { label:'ランチョンセミナーの整理券を確認' }
+      ]},
+      { title:'絶対忘れない（スマホに集約）', items:[
+        { key:true, label:'学会参加証のQR', sub:'事前登録制／スクショ保存しておく' },
+        { key:true, label:'スカイマーク往復のQR・eチケット', sub:'スクショ保存しておく' },
+      ]},
+      { title:'服装・身だしなみ', items:[
+        { key:true, label:'スーツ一式', sub:'前日に準備' },
+        { label:'替えのシャツ' },
+        { label:'下着・靴下（1泊分）' },
+        { label:'汗拭きシート' },
+        { label:'洗面用具（最小限）', sub:'歯ブラシ・タオル等はホテルにあり' }
+      ]},
+      { title:'あると安心', items:[
+        { key:true, label:'折りたたみ傘', sub:'6月下旬・梅雨／空中庭園は屋外' },
+        { label:'スマホ充電器' },
+        { label:'名刺' },
+        { label:'常備薬' }
+      ]}
+    ]
+  },
+
+
+  /* ---------------- 主要地点・Googleマップ一覧 ---------------- */
+  mapDirectory:{
+    title:'主要地点・Googleマップ',
+    intro:'住所確認や道に迷ったときに使用。項目を開き、行きたい場所をタップするとGoogleマップへ移動します。',
+    groups:[
+      { title:'✈️ 空港・神戸の学会会場', items:[
+        { icon:'✈️', name:'長崎空港', address:'〒856-0816 長崎県大村市箕島町593番地', url:'https://www.google.com/maps/search/?api=1&query=%E9%95%B7%E5%B4%8E%E7%A9%BA%E6%B8%AF%20%E9%95%B7%E5%B4%8E%E7%9C%8C%E5%A4%A7%E6%9D%91%E5%B8%82%E7%AE%95%E5%B3%B6%E7%94%BA593' },
+        { icon:'✈️', name:'神戸空港', address:'〒650-0048 兵庫県神戸市中央区神戸空港1', url:'https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF%20%E5%85%B5%E5%BA%AB%E7%9C%8C%E7%A5%9E%E6%88%B8%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF1' },
+        { icon:'🏢', name:'神戸国際展示場 1号館', address:'〒650-0046 神戸市中央区港島中町6-11-1｜参加受付', url:'https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E5%9B%BD%E9%9A%9B%E5%B1%95%E7%A4%BA%E5%A0%B41%E5%8F%B7%E9%A4%A8%20%E7%A5%9E%E6%88%B8%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%B8%AF%E5%B3%B6%E4%B8%AD%E7%94%BA6-11-1' },
+        { icon:'🎤', name:'神戸国際会議場', address:'〒650-0046 神戸市中央区港島中町6-9-1｜塚原さんの発表会場', url:'https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E5%9B%BD%E9%9A%9B%E4%BC%9A%E8%AD%B0%E5%A0%B4%20%E7%A5%9E%E6%88%B8%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%B8%AF%E5%B3%B6%E4%B8%AD%E7%94%BA6-9-1' },
+        { icon:'🏨', name:'神戸ポートピアホテル', address:'〒650-0046 神戸市中央区港島中町6-10-1｜藤田さんの発表会場', url:'https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E3%83%9D%E3%83%BC%E3%83%88%E3%83%94%E3%82%A2%E3%83%9B%E3%83%86%E3%83%AB%20%E7%A5%9E%E6%88%B8%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%B8%AF%E5%B3%B6%E4%B8%AD%E7%94%BA6-10-1' }
+      ]},
+      { title:'🌃 大阪の宿泊・食事・観光', items:[
+        { icon:'🚉', name:'JR大阪駅 西口', address:'〒530-0001 大阪市北区梅田3-1-1｜ホテルへ向かう出口', url:'https://www.google.com/maps/search/?api=1&query=JR%E5%A4%A7%E9%98%AA%E9%A7%85%20%E8%A5%BF%E5%8F%A3' },
+        { icon:'🏨', name:'ハートンホテル西梅田', address:'〒530-0001 大阪市北区梅田3-3-55', url:'https://www.google.com/maps/search/?api=1&query=%E3%83%8F%E3%83%BC%E3%83%88%E3%83%B3%E3%83%9B%E3%83%86%E3%83%AB%E8%A5%BF%E6%A2%85%E7%94%B0%20%E5%A4%A7%E9%98%AA%E5%B8%82%E5%8C%97%E5%8C%BA%E6%A2%85%E7%94%B03-3-55' },
+        { icon:'🥩', name:'アウトバックステーキハウス 梅田店', address:'〒530-0003 大阪市北区堂島1-6-20 堂島アバンザB1F', url:'https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%82%A6%E3%83%88%E3%83%90%E3%83%83%E3%82%AF%E3%82%B9%E3%83%86%E3%83%BC%E3%82%AD%E3%83%8F%E3%82%A6%E3%82%B9%20%E6%A2%85%E7%94%B0%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E5%8C%97%E5%8C%BA%E5%A0%82%E5%B3%B61-6-20' },
+        { icon:'🌉', name:'梅田スカイビル・空中庭園展望台', address:'〒531-6039 大阪市北区大淀中1-1-88', url:'https://www.google.com/maps/search/?api=1&query=%E6%A2%85%E7%94%B0%E3%82%B9%E3%82%AB%E3%82%A4%E3%83%93%E3%83%AB%20%E7%A9%BA%E4%B8%AD%E5%BA%AD%E5%9C%92%E5%B1%95%E6%9C%9B%E5%8F%B0%20%E5%A4%A7%E9%98%AA%E5%B8%82%E5%8C%97%E5%8C%BA%E5%A4%A7%E6%B7%80%E4%B8%AD1-1-88' }
+      ]},
+      { title:'🚃 駅・徒歩で迷いやすい乗換ポイント', items:[
+        { icon:'🚝', name:'ポートライナー 市民広場駅', address:'神戸市中央区港島中町6丁目｜会議場・展示場・ポートピアホテル最寄り', url:'https://www.google.com/maps/search/?api=1&query=%E3%83%9D%E3%83%BC%E3%83%88%E3%83%A9%E3%82%A4%E3%83%8A%E3%83%BC%20%E5%B8%82%E6%B0%91%E5%BA%83%E5%A0%B4%E9%A7%85' },
+        { icon:'🚝', name:'ポートライナー 三宮駅', address:'神戸市中央区雲井通8丁目｜JR三ノ宮駅の東側', url:'https://www.google.com/maps/search/?api=1&query=%E3%83%9D%E3%83%BC%E3%83%88%E3%83%A9%E3%82%A4%E3%83%8A%E3%83%BC%20%E4%B8%89%E5%AE%AE%E9%A7%85' },
+        { icon:'🚉', name:'JR三ノ宮駅', address:'〒651-0097 神戸市中央区布引町4-1-1', url:'https://www.google.com/maps/search/?api=1&query=JR%E4%B8%89%E3%83%8E%E5%AE%AE%E9%A7%85%20%E7%A5%9E%E6%88%B8%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%B8%83%E5%BC%95%E7%94%BA4-1-1' },
+        { icon:'🚶', route:true, name:'ポートライナー三宮駅 → JR三ノ宮駅', address:'大阪方面のJR新快速へ乗り換える徒歩ルート', url:'https://www.google.com/maps/dir/?api=1&origin=%E3%83%9D%E3%83%BC%E3%83%88%E3%83%A9%E3%82%A4%E3%83%8A%E3%83%BC%E4%B8%89%E5%AE%AE%E9%A7%85&destination=JR%E4%B8%89%E3%83%8E%E5%AE%AE%E9%A7%85&travelmode=walking' },
+        { icon:'🚶', route:true, name:'JR三ノ宮駅 → ポートライナー三宮駅', address:'市民広場・神戸空港方面へ乗り換える徒歩ルート', url:'https://www.google.com/maps/dir/?api=1&origin=JR%E4%B8%89%E3%83%8E%E5%AE%AE%E9%A7%85&destination=%E3%83%9D%E3%83%BC%E3%83%88%E3%83%A9%E3%82%A4%E3%83%8A%E3%83%BC%E4%B8%89%E5%AE%AE%E9%A7%85&travelmode=walking' },
+        { icon:'🚶', route:true, name:'市民広場駅 → 神戸国際会議場', address:'塚原さんの発表会場までの徒歩ルート', url:'https://www.google.com/maps/dir/?api=1&origin=%E5%B8%82%E6%B0%91%E5%BA%83%E5%A0%B4%E9%A7%85&destination=%E7%A5%9E%E6%88%B8%E5%9B%BD%E9%9A%9B%E4%BC%9A%E8%AD%B0%E5%A0%B4&travelmode=walking' },
+        { icon:'🚶', route:true, name:'市民広場駅 → 神戸ポートピアホテル', address:'藤田さんの発表会場までの徒歩ルート', url:'https://www.google.com/maps/dir/?api=1&origin=%E5%B8%82%E6%B0%91%E5%BA%83%E5%A0%B4%E9%A7%85&destination=%E7%A5%9E%E6%88%B8%E3%83%9D%E3%83%BC%E3%83%88%E3%83%94%E3%82%A2%E3%83%9B%E3%83%86%E3%83%AB&travelmode=walking' },
+        { icon:'🚶', route:true, name:'大阪駅西口 → ハートンホテル西梅田', address:'ホテルまでの徒歩ルート', url:'https://www.google.com/maps/dir/?api=1&origin=JR%E5%A4%A7%E9%98%AA%E9%A7%85%20%E8%A5%BF%E5%8F%A3&destination=%E3%83%8F%E3%83%BC%E3%83%88%E3%83%B3%E3%83%9B%E3%83%86%E3%83%AB%E8%A5%BF%E6%A2%85%E7%94%B0&travelmode=walking' }
+      ]}
+    ],
+    note:'Googleマップでは、現在地・工事・駅構内の出口により案内が変わることがあります。駅では「ポートライナー三宮」と「JR三ノ宮」の表記を確認してください。'
+  },
+
+  foot:'第71回 日本透析医学会総会 &nbsp;<span>·</span>&nbsp; Kobe &amp; Osaka &nbsp;<span>·</span>&nbsp; 2026'
+};
+
+
+/* =====================================================================
+   レンダラー（基本いじらない）
+   ===================================================================== */
+function coverHTML(c){
+  var meta = c.meta.map(function(m){
+    return '<div><span>'+m.label+'</span><strong>'+m.value+'</strong></div>';
+  }).join('');
+  return '<header class="cover"><div class="wave"></div>'
+    + '<div class="eyebrow">'+c.eyebrow+'</div>'
+    + '<h1>'+c.title+'</h1>'
+    + '<div class="sub">'+c.sub+'</div>'
+    + '<div class="meta">'+meta+'</div>'
+    + '</header>';
+}
+
+function safeMapUrl(url){
+  try{
+    var u = new URL(url);
+    var allowedHosts = ['www.google.com','google.com','maps.app.goo.gl'];
+    var blockedText = /(googleusercontent\.com|placeholder|example\.com)/i;
+    if(u.protocol !== 'https:' || allowedHosts.indexOf(u.hostname) === -1 || blockedText.test(url)){
+      return '';
+    }
+    return u.href;
+  }catch(e){
+    return '';
+  }
+}
+
+function mapLinkHTML(link){
+  if(!link) return '';
+  var href = safeMapUrl(link.url || '');
+  var sub = link.sub ? '<span class="map-link-sub">'+link.sub+'</span>' : '';
+  if(!href){
+    return '<span class="map-link is-invalid">⚠ 地図リンクを確認してください'+sub+'</span>';
+  }
+  return '<a class="map-link" href="'+href+'" target="_blank" rel="noopener noreferrer">'
+    + '<span>'+link.label+'</span>'+sub+'</a>';
+}
+
+function timelineHTML(b){
+  var stops = b.stops.map(function(s){
+    var cls   = 'stop' + (s.key ? ' key' : '');
+    var sub   = s.sub   ? '<small>'+s.sub+'</small>' : '';
+    var badge = s.badge ? ' <span class="badge">'+s.badge+'</span>' : '';
+    var btnUrl = s.btn ? safeMapUrl(s.btn.url || '') : '';
+    var btn   = (s.btn && btnUrl) ? '<a href="'+btnUrl+'" target="_blank" rel="noopener noreferrer" class="tt-btn">'+s.btn.label+'</a>' : '';
+    var mapLink = mapLinkHTML(s.mapLink);
+    var drawer = '';
+    if(s.drawer){
+      var drawerUrl = s.drawer.btn ? safeMapUrl(s.drawer.btn.url || '') : '';
+      var dBtn = (s.drawer.btn && drawerUrl) ? '<a href="'+drawerUrl+'" target="_blank" rel="noopener noreferrer" class="tt-btn">'+s.drawer.btn.label+'</a>' : '';
+      drawer = '<details class="transit-drawer"><summary>'+s.drawer.label+'</summary>'
+        + '<div class="transit-body">'+(s.drawer.html || '')+dBtn+'</div></details>';
+    }
+    return '<div class="'+cls+'">'
+      + '<div class="time">'+s.time+sub+'</div>'
+      + '<h3>'+s.title+badge+'</h3>'
+      + (s.html || '')
+      + mapLink
+      + btn
+      + drawer
+      + '</div>';
+  }).join('');
+  return '<div class="timeline">'+stops+'</div>';
+}
+
+function talkHTML(b){
+  var grid = b.grid.map(function(g){
+    return '<div'+(g.wide?' class="wide"':'')+'><span>'+g.label+'</span><strong>'+g.value+'</strong></div>';
+  }).join('');
+  return '<div class="talk"><div class="tag">'+b.tag+'</div><h3>'+b.title+'</h3><div class="grid">'+grid+'</div></div>';
+}
+
+function noteHTML(b){
+  return '<div class="note"><span class="mk">'+b.mark+'</span><span>'+b.html+'</span></div>';
+}
+
+function eveningHTML(b){
+  var rows = b.rows.map(function(r){
+    return '<div class="row"><span class="t">'+r.t+'</span><span>'+r.html+mapLinkHTML(r.mapLink)+'</span></div>';
+  }).join('');
+  return '<div class="evening"><h4>'+b.title+'</h4>'+rows+'</div>';
+}
+
+function blockHTML(b){
+  switch(b.type){
+    case 'timeline': return timelineHTML(b);
+    case 'talk':     return talkHTML(b);
+    case 'note':     return noteHTML(b);
+    case 'evening':  return eveningHTML(b);
+    default:         return '';
+  }
+}
+
+function dayHTML(d){
+  var head = '<div class="day-head"><div class="num">'+d.num+'</div>'
+    + '<div class="dh-txt"><h2>'+d.date+'</h2><p>'+d.route+'</p></div></div>';
+  var body = '<section class="day">'+ d.blocks.map(blockHTML).join('') +'</section>';
+  return '<div class="day-chapter day-'+d.num+'">' + head + body + '</div>';
+}
+
+function mapDirectoryHTML(md){
+  if(!md || !md.groups) return '';
+  var groups = md.groups.map(function(g){
+    var items = g.items.map(function(it){
+      var href = safeMapUrl(it.url || '');
+      var cls = 'place-card' + (it.route ? ' route' : '');
+      var icon = it.icon || '📍';
+      var content = '<span class="place-icon">'+icon+'</span>'
+        + '<span><span class="place-name">'+it.name+'</span>'
+        + '<span class="place-address">'+it.address+'</span></span>'
+        + '<span class="place-action">›</span>';
+      if(!href){
+        return '<span class="'+cls+' is-invalid">'+content+'</span>';
+      }
+      return '<a class="'+cls+'" href="'+href+'" target="_blank" rel="noopener noreferrer">'+content+'</a>';
+    }).join('');
+    return '<details class="place-drawer"><summary>'+g.title+'</summary><div class="place-list">'+items+'</div></details>';
+  }).join('');
+  var note = md.note ? '<div class="map-directory-note">'+md.note+'</div>' : '';
+  return '<div class="day-head"><div class="num">⌖</div>'
+    + '<div class="dh-txt"><h2>'+md.title+'</h2><p>住所・徒歩ルートをすぐ開く</p></div></div>'
+    + '<section class="map-directory"><p class="map-directory-intro">'+md.intro+'</p>'+groups+note+'</section>';
+}
+
+function checklistHTML(cl){
+  var groups = cl.groups.map(function(g){
+    var items = g.items.map(function(it){
+      var cls = 'cl-item' + (it.key ? ' key' : '');
+      var sub = it.sub ? '<small>'+it.sub+'</small>' : '';
+      return '<div class="'+cls+'"><div class="cl-box"></div><div class="lbl">'+it.label+sub+'</div></div>';
+    }).join('');
+    return '<div class="cl-group"><h4>'+g.title+'</h4>'+items+'</div>';
+  }).join('');
+  return '<div class="day-head"><div class="num">✓</div>'
+    + '<div class="dh-txt"><h2>持ち物チェックリスト</h2><p>'+cl.intro+'</p></div></div>'
+    + '<section class="checklist">'
+    + '<div class="cl-progress"><div class="bar"><i id="clBar"></i></div><div class="count" id="clCount">0/0</div></div>'
+    + groups
+    + '<button class="cl-reset" id="clReset">すべてのチェックを外す</button>'
+    + '</section>';
+}
+
+/* 描画 */
+document.getElementById('book').innerHTML =
+    coverHTML(TRIP.cover)
+  + TRIP.days.map(dayHTML).join('')
+  + checklistHTML(TRIP.checklist)
+  + mapDirectoryHTML(TRIP.mapDirectory)
+  + '<div class="foot">'+TRIP.foot+'</div>';
+
+/* 乗換・主要地点ドロワー：開いた内容が画面外に隠れる場合だけ先頭へ寄せる */
+(function(){
+  var drawers = Array.prototype.slice.call(document.querySelectorAll('.transit-drawer, .place-drawer'));
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  drawers.forEach(function(drawer){
+    drawer.addEventListener('toggle', function(){
+      if(!drawer.open) return;
+      window.requestAnimationFrame(function(){
+        var rect = drawer.getBoundingClientRect();
+        var needsScroll = rect.top < 8 || rect.bottom > window.innerHeight - 8;
+        if(needsScroll){
+          drawer.scrollIntoView({
+            behavior: reduceMotion ? 'auto' : 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  });
+})();
+
+/* チェックリストの保存・進捗（localStorage） */
 (function(){
   var items = Array.prototype.slice.call(document.querySelectorAll('.cl-item'));
-  var bar = document.getElementById('clBar');
+  var bar   = document.getElementById('clBar');
   var count = document.getElementById('clCount');
-  var KEY = 'mochimono_check_71jsdt';
+  var KEY   = TRIP.checklist.key;
 
-  // ラベルからキーを作る（順序が変わっても安定）
   items.forEach(function(el, i){
     el.dataset.k = (el.querySelector('.lbl').textContent.trim().slice(0,24)) + '_' + i;
   });
@@ -671,9 +1160,7 @@
   function load(){
     try{
       var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
-      items.forEach(function(el){
-        if(saved[el.dataset.k]) el.classList.add('checked');
-      });
+      items.forEach(function(el){ if(saved[el.dataset.k]) el.classList.add('checked'); });
     }catch(e){}
   }
   function save(){
@@ -690,10 +1177,7 @@
   }
 
   items.forEach(function(el){
-    el.addEventListener('click', function(){
-      el.classList.toggle('checked');
-      save(); update();
-    });
+    el.addEventListener('click', function(){ el.classList.toggle('checked'); save(); update(); });
   });
   document.getElementById('clReset').addEventListener('click', function(){
     items.forEach(function(el){ el.classList.remove('checked'); });
